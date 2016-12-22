@@ -19,6 +19,7 @@ import dagger.Component;
 )
 public interface AppComponent {
     void inject(ProductListener presenter);
+
     void inject(MainActivity activity);
 
 }

@@ -15,14 +15,12 @@ import java.util.List;
 
 
 public class ShoppingCart {
-    private final SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
-    private List<LineItem> shoppingCart;
-
     private static final String OPEN_CART_EXITS = "open_cart_exists";
     private static final String SERIALIZED_CART_ITEMS = "serialized_cart_items";
     private static final String SERIALIZED_CUSTOMER = "serialized_customer";
-
+    private final SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    private List<LineItem> shoppingCart;
 
 
     public ShoppingCart(SharedPreferences sharedPreferences) {
@@ -36,12 +34,13 @@ public class ShoppingCart {
 
         Gson gson = new Gson();
 
-        if (sharedPreferences.getBoolean(OPEN_CART_EXITS, false)){
-            String serializedCartItems = sharedPreferences.getString(SERIALIZED_CART_ITEMS,"");
-            String serializedCustomer = sharedPreferences.getString(SERIALIZED_CUSTOMER,"");
-            if (!serializedCartItems.equals("")){
+        if (sharedPreferences.getBoolean(OPEN_CART_EXITS, false)) {
+            String serializedCartItems = sharedPreferences.getString(SERIALIZED_CART_ITEMS, "");
+            String serializedCustomer = sharedPreferences.getString(SERIALIZED_CUSTOMER, "");
+            if (!serializedCartItems.equals("")) {
                 shoppingCart = gson.<ArrayList<LineItem>>fromJson(serializedCartItems,
-                        new TypeToken<ArrayList<LineItem>>(){}.getType());
+                        new TypeToken<ArrayList<LineItem>>() {
+                        }.getType());
             }
 
 
@@ -51,19 +50,19 @@ public class ShoppingCart {
 
     }
 
-    public void addItemToCart(LineItem item){
-        if (shoppingCart.contains(item)){
+    public void addItemToCart(LineItem item) {
+        if (shoppingCart.contains(item)) {
             int currentPosition = shoppingCart.indexOf(item);
             LineItem itemAlreadyInCart = shoppingCart.get(currentPosition);
             itemAlreadyInCart.setQuantity(itemAlreadyInCart.getQuantity() + item.getQuantity());
             shoppingCart.set(currentPosition, itemAlreadyInCart);
-        }else {
+        } else {
             shoppingCart.add(item);
         }
 
     }
 
-    public void clearShoppingCart(){
+    public void clearShoppingCart() {
         shoppingCart.clear();
         editor.putString(SERIALIZED_CART_ITEMS, "").commit();
         editor.putString(SERIALIZED_CUSTOMER, "").commit();
@@ -71,19 +70,19 @@ public class ShoppingCart {
         updateApp();
     }
 
-    public void removeItemFromCart(LineItem item){
+    public void removeItemFromCart(LineItem item) {
         shoppingCart.remove(item);
         updateApp();
     }
 
 
-    public void completeCheckout(){
+    public void completeCheckout() {
         shoppingCart.clear();
         updateApp();
     }
 
     private void updateApp() {
-       //perform any action that is needed to update the app
+        //perform any action that is needed to update the app
     }
 
     public List<LineItem> getShoppingCart() {
@@ -91,8 +90,7 @@ public class ShoppingCart {
     }
 
 
-
-    public void saveCartToPreference(){
+    public void saveCartToPreference() {
         if (shoppingCart != null) {
             Gson gson = new Gson();
             String serializedItems = gson.toJson(shoppingCart);

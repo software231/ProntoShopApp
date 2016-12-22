@@ -10,10 +10,10 @@ public class Product {
     private double salePrice;
 
 
-    public Product(){
+    public Product() {
     }
 
-    public Product(Product product){
+    public Product(Product product) {
         this.id = product.getId();
         this.productName = product.getProductName();
         this.description = product.getDescription();

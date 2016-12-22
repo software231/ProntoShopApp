@@ -15,7 +15,7 @@ public class ProductListener {
     @Inject
     ShoppingCart mCart;
 
-    public ProductListener(){
+    public ProductListener() {
         //Here is where the actual injection takes place
         ProntoShopApplication.getInstance().getAppComponent().inject(this);
     }
