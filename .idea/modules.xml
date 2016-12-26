@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ProntoShopApp.iml" filepath="$PROJECT_DIR$/ProntoShopApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/daggersample2/daggersample2.iml" filepath="$PROJECT_DIR$/daggersample2/daggersample2.iml" />
     </modules>
   </component>
 </project>
