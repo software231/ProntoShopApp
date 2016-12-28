@@ -1,4 +1,4 @@
-package com.example.daggersample2.module;
+package com.example.daggersample2.dagger;
 
 import com.example.daggersample2.model.Vehicle;
 

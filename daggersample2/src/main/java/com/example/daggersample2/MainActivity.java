@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.daggersample2.model.Vehicle;
-import com.example.daggersample2.module.DaggerVehicleComponent;
-import com.example.daggersample2.module.VehicleComponent;
-import com.example.daggersample2.module.VehicleModule;
+import com.example.daggersample2.dagger.DaggerVehicleComponent;
+import com.example.daggersample2.dagger.VehicleComponent;
+import com.example.daggersample2.dagger.VehicleModule;
 
 public class MainActivity extends AppCompatActivity {
 
